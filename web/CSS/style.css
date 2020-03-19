@@ -1,0 +1,38 @@
+. * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #ff9f45;
+    min-height: 8vh;
+}
+
+.logo {
+    color: #262626;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 23px;
+}
+
+.nav-links{
+    display: flex;
+    justify-content: space-around;
+    width: 35%;
+}
+
+.nav-links a {
+    color: #262626;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-size: 17px;
+    font-weight: 900;
+}
+
+.nav-links li {
+    list-style: none;
+}
