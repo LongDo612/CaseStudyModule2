@@ -35,7 +35,11 @@
 <h1 class="welcome">Welcome back <%=username%>! Successful login at <%=loginTime%></h1>
 
 <div class="member-manage">
-
+    <p>
+        <a href="login.jsp">Log Out</a>
+    </p>
+    
+    <p><a href="/login?action=edit">Edit your profile</a></p>
 </div>
 </body>
 </html>
