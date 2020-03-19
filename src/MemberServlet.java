@@ -23,6 +23,7 @@ public class MemberServlet extends HttpServlet {
                 login(request,response);
                 break;
             default:
+                getLogin(request,response);
                 break;
         }
     }
@@ -46,9 +47,10 @@ public class MemberServlet extends HttpServlet {
     public void login(HttpServletRequest request, HttpServletResponse response) {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+//        String name = customerService.findByID(1).getName();
         RequestDispatcher requestDispatcher;
-        request.setAttribute("username",username);
         request.setAttribute("loginTime",new Date());
+
         if (username.equals("admin")&&password.equals("123123")){
             try {
                 requestDispatcher = request.getRequestDispatcher("user.jsp");

@@ -4,8 +4,13 @@ import java.util.List;
 import java.util.Map;
 
 public class CustomerDAO implements CustomerService{
-    @Override
+    private static Map<Integer, Customer> customers;
 
+    static {
+        customers.put(1, new Customer(1,"Long Do", "admin1", "123123"));
+    }
+
+    @Override
     public List<Customer> findAll() {
         return null;
     }
@@ -33,7 +38,7 @@ public class CustomerDAO implements CustomerService{
 
     @Override
     public Customer findByID(int id) {
-        return null;
+        return customers.get(id);
     }
 
     @Override
@@ -46,31 +51,4 @@ public class CustomerDAO implements CustomerService{
 
     }
 
-    public Map getCustomer() {
-        Map customerData = new HashMap<>();
-        File customer = new File("/Users/longdo/CaseStudyModule2/src/Customer");
-        String line = "";
-        BufferedReader br = null;
-        try {
-            br = new BufferedReader(new FileReader(customer));
-            while ((line=br.readLine())!=null){
-                customerData.put(line.split("-")[0],line.split("-")[1]);
-            }
-        }
-        catch (FileNotFoundException e){
-            e.printStackTrace();
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-        finally {
-            try {
-                br.close();
-            }
-            catch (IOException e){
-                e.printStackTrace();
-            }
-        }
-        return customerData;
-    }
 }
