@@ -14,6 +14,8 @@
 <body>
     <h2>Your Blog Site</h2>
 
+    <h3><a href="/login?action=add">Add new blog</a></h3>
+
     <table>
         <tr>
             <td>Blog</td>
@@ -23,9 +25,9 @@
 
         <c:forEach items='${requestScope["blogs"]}' var="blog">
             <tr>
-                <td>${blog.getHeader()} ${blog.getContent()} ${blog.getImage()}</td>
-                <td><a href="/login?action=edit&id=${blog.getID()}">Edit</a></td>
-                <td><a href="/login?action=delete&id=${blog.getID()}"></a></td>
+                <td>${blog.getHeader()}<br> ${blog.getContent()}<br> ${blog.getImage()}</td>
+                <td><a href="/login?action=edit&id=${blog.getId()()}">Edit</a></td>
+                <td><a href="/login?action=delete&id=${blog.getId()}"></a></td>
             </tr>
         </c:forEach>
     </table>

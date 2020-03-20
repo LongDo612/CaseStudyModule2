@@ -1,10 +1,8 @@
 import com.sun.org.apache.bcel.internal.generic.ANEWARRAY;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.regex.Matcher;
 
 public class BlogDAO {
     private static Map<Integer, Blog> blogs = new HashMap<>();
@@ -44,5 +42,21 @@ public class BlogDAO {
 
     public List<Blog> getBlog() {
         return new ArrayList<>(blogs.values());
+    }
+
+    public int randomID() {
+        return new Random().nextInt(1000);
+    }
+
+    public Blog findByID(int id) {
+        return blogs.get(id);
+    }
+
+    public void removeByID(int id){
+        blogs.remove(id);
+    }
+
+    public void update(int key, Blog blog){
+        blogs.put(key,blog);
     }
 }
