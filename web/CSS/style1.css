@@ -47,3 +47,15 @@ nav {
     letter-spacing: 2px;
     font-weight: 400;
 }
+
+.member-manage  {
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
+
+}
+
+.member-manage a {
+    text-decoration: none;
+
+}
