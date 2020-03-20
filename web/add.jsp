@@ -35,7 +35,7 @@
         <tr><input type="submit" value="Add Blog"></tr>
     </table>
 
-    <h3><a href="blog.jsp">Return to your blog site</a></h3>
+    <h3><a href="/login">Return to your blog site</a></h3>
 </form>
 </body>
 </html>

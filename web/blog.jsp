@@ -26,9 +26,11 @@
         <c:forEach items='${requestScope["blogs"]}' var="blog">
             <tr>
                 <td>${blog.getHeader()}<br> ${blog.getContent()}<br> ${blog.getImage()}</td>
-                <td><a href="/login?action=edit&id=${blog.getId()()}">Edit</a></td>
-                <td><a href="/login?action=delete&id=${blog.getId()}"></a></td>
+                <td><a href="/login?action=edit&id=${blog.id}">Edit</a></td>
+                <td><a href="/login?action=delete&id=${blog.id}">Delete</a></td>
             </tr>
+            <tr></tr>
+            <tr></tr>
         </c:forEach>
     </table>
 </body>

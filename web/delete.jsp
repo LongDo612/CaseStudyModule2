@@ -13,7 +13,7 @@
 <body>
     <h3>Delete Blog</h3>
 
-    <p><a href="blog.jsp">Back to your blog site</a></p>
+    <p><a href="/login">Back to your blog site</a></p>
 
     <form method="post">
         <h3>You want to delete ${requestScope["blog"].getHeader()} ?</h3>

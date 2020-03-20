@@ -20,9 +20,6 @@ public class MemberServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
-            case "login":
-                login(request, response);
-                break;
             case "add":
                 addBlog(request,response);
                 break;
@@ -43,9 +40,6 @@ public class MemberServlet extends HttpServlet {
             action = "";
         }
         switch (action) {
-            case "blog":
-                showBlogPage(request, response);
-                break;
             case "add":
                 showAddForm(request,response);
                 break;
@@ -55,8 +49,9 @@ public class MemberServlet extends HttpServlet {
             case "delete":
                 showDeleteForm(request,response);
                 break;
+            case "blog":
             default:
-                getLogin(request, response);
+                showBlogPage(request, response);
                 break;
         }
     }
@@ -74,41 +69,9 @@ public class MemberServlet extends HttpServlet {
         }
     }
 
-    public void login(HttpServletRequest request, HttpServletResponse response) {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        RequestDispatcher requestDispatcher;
-        request.setAttribute("loginTime", new Date());
 
-        if (username.equals(legalUserName) && password.equals(legalPassword)) {
-            try {
-                requestDispatcher = request.getRequestDispatcher("user.jsp");
-                requestDispatcher.forward(request, response);
-            } catch (ServletException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            try {
-                response.sendRedirect("login.jsp");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
 
-        }
-    }
 
-    public void getLogin(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
-            dispatcher.forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void showAddForm(HttpServletRequest request, HttpServletResponse response) {
         RequestDispatcher dispatcher = request.getRequestDispatcher("add.jsp");
@@ -127,6 +90,7 @@ public class MemberServlet extends HttpServlet {
         String image = request.getParameter("NewImage");
         int id = blogDAO.randomID();
         Blog newBlog = new Blog(id,header,content,image);
+        blogDAO.update(id,newBlog);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("add.jsp");
         try{
             requestDispatcher.forward(request,response);
@@ -212,7 +176,7 @@ public class MemberServlet extends HttpServlet {
         else {
             blogDAO.removeByID(id);
             try {
-                response.sendRedirect("blog.jsp");
+                response.sendRedirect("/login");
             } catch (IOException e) {
                 e.printStackTrace();
             }

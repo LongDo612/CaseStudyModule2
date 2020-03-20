@@ -23,7 +23,10 @@
                 <td><input type="text" name="newContent1" value="${requestScope["blog"].getContent()}"></td>
             </tr>
 
-            <tr><input type="submit" value="Update Blog"></tr>
+            <tr>
+                <input type="submit" value="Update Blog">
+                <h3><a href="/login">Return to your blog site</a></h3>
+            </tr>
         </table>
     </form>
 </body>
